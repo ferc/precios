@@ -1,29 +1,15 @@
-var Config    = require('./app/config');
-var database  = Config.database;
-var Sequelize = require('sequelize');
+const Scraper   = require('./app/scraper');
+const Config    = require('./app/config');
+const Sequelize = require('sequelize');
+const database  = Config.database;
+
 var sequelize = new Sequelize(database.name, database.user, database.password, {
   host    : database.host,
   dialect : database.engine
 });
+var scraper   = new Scraper(sequelize);
 
-var Market = sequelize.define('markets', {
-  id          : {
-    type          : Sequelize.INTEGER,
-    autoIncrement : true,
-    primaryKey    : true
-  },
-  api_id      : Sequelize.STRING,
-  description : Sequelize.STRING,
-  latitude    : Sequelize.DOUBLE,
-  longitude   : Sequelize.DOUBLE
+sequelize.sync().then(function() {
+  scraper.fillMarkets();
+  scraper.fillPrices();
 });
-
-sequelize
-  .sync()
-  .then(function() {
-    console.log('Works!');
-  })
-  .catch(function() {
-    console.log('Fail!');
-  })
-;

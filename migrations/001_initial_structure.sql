@@ -37,9 +37,9 @@ DROP TABLE IF EXISTS `markets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `markets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `api_id` varchar(16) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `direction` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
   PRIMARY KEY (`id`),
