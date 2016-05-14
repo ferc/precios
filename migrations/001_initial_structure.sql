@@ -78,7 +78,7 @@ CREATE TABLE `prices` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `market_id` int(10) unsigned NOT NULL,
   `product_id` int(10) unsigned NOT NULL,
-  `date` timestamp NOT NULL,
+  `date` date NOT NULL,
   `price` float NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `prices_market_id_foreign` FOREIGN KEY (`market_id`) REFERENCES `markets` (`id`),

@@ -10,6 +10,10 @@ var sequelize = new Sequelize(database.name, database.user, database.password, {
 var scraper   = new Scraper(sequelize);
 
 sequelize.sync().then(function() {
-  scraper.fillMarkets();
-  scraper.fillPrices();
+  scraper.fillMarkets()
+    .then(scraper.fillPrices.bind(scraper))
+    .then(() => {
+      console.log('Scraped!');
+    })
+  ;
 });
