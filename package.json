@@ -1,0 +1,20 @@
+{
+  "name": "precios",
+  "description": "Web scraping del listado de precios claros",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": "Fernando Carril <facarril@gmail.com>",
+  "contributors": [
+  ],
+  "homepage": "https://github.com/ferc/precios",
+  "repository": "ferc/precios",
+  "dependencies": {
+    "sequelize": "3.23.*"
+  },
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">= 5.0.0"
+  }
+}
